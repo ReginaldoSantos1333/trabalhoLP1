@@ -1,0 +1,118 @@
+from distutils import command
+from tkinter import *
+from tkinter import messagebox
+from tkinter import Tk
+
+
+
+        
+
+
+#inserçãorotina
+
+
+def inserir():
+    pass
+
+    #editar rotina
+
+def editar():
+    pass
+
+
+    #buscar rotina
+ 
+def buscar():
+    pass
+
+
+    #visualizar rotina
+
+def ver():
+    pass
+
+
+
+    # upday rotina
+   
+def upday():
+    pass
+
+
+
+#apagar rotina
+def apagar():
+    pass
+
+
+    #encerrar sessão
+class Interface():
+    def __init__(self):
+        pass
+
+    def mensagem(self,tipomsg,aba):
+        messagebox.showinfo(title ="UPday", message = "Bom te conhecer {}".format(tipomsg))
+        aba.destroy()
+
+    def boasvindas(self):
+        self.welcome = Tk()
+        vnum_cstexto = StringVar()
+        # Mensagem de boas vindas
+        self.welcome.title("Bem vindo ao UPday!")
+        welcomelbl = Label(self.welcome, text= """Olá! Bem vindo(a) à UPday!
+        Juntos podemos dar um 'Up' no seu dia ;)
+        Primeiramente, seria ótimo te conhecer mais um pouco.
+                Vamos começar?!""")
+        welcomelbl.grid(column=0,row=0)
+        # Caixa de inserção
+        welcometab = Entry(self.welcome, textvariable=vnum_cstexto)
+        welcometab.grid(column=0, row= 3)
+        # Mensagem na caixa de texto
+        vnum_cstexto.set("Nos diga o seu nome!")
+        # Botão de inserção
+        welcomebtn = Button(self.welcome, text="Mostrar mensagem", command=lambda:self.mensagem(vnum_cstexto.get(),self.welcome))
+        welcomebtn.grid(column =0, row = 4)
+        self.welcome.mainloop()
+
+
+    def mainW(self):
+        self.mainW = Tk()
+        # Muda a corda janela principal
+        self.mainW.configure(background="lightblue")
+        # Titulo da janela
+        self.mainW.title("UPday")
+        # Tamanho janela principal
+        #mainwindow.geometry("1280x720")
+        # Traz janela para frente 
+        self.mainW.lift()
+        #Label com o nome do app, cor de fundo,texto e sua fonte
+        texto_inicial = Label(self.mainW, text = "UPday",bg = "lightblue",fg = "black")
+        texto_inicial.configure(font=("Segoe Print", 25))
+        texto_inicial.grid(column=1,row=0, padx = 100,pady = 300)
+
+        # Botão de inserção
+        insert = Button(self.mainW, text = "Nova Rotina", command= inserir)
+        insert.grid(column=0,row=6, padx = 10,pady = 10)
+        # Botão de edição
+        edit = Button(self.mainW, text= "Editar Rotina", command= editar)
+        edit.grid(column=0,row=7, padx = 10,pady = 10)
+        # Botão de buscar
+        search = Button(self.mainW, text= "Buscar Rotina", command=buscar)
+        search.grid(column=0,row=8, padx = 10,pady = 10)
+        # Botão de visualiza
+        check = Button(self.mainW, text= "Ver Rotina", command=ver)
+        check.grid(column=2,row=6, padx = 10,pady = 10)
+        # Botão de upday
+        Upd = Button(self.mainW, text = "UPday Rotina", command=upday)
+        Upd.grid(column=2,row=7, padx = 10,pady = 10)
+        # Botão de apagar
+        erase = Button(self.mainW, text = "Apagar Rotina", command=apagar)
+        erase.grid(column=2,row=8, padx = 10,pady = 10)
+
+        self.mainW.mainloop()
+
+
+a = Interface()
+
+a.boasvindas()
+a.mainW()
