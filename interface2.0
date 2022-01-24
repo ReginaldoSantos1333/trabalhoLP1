@@ -1,0 +1,356 @@
+
+from tkinter import *
+from tkinter import messagebox
+from tkinter import Tk
+from tokenize import String
+
+
+
+
+        
+
+
+#inserçãorotina
+
+
+def inserir():
+    inserir = Tk()
+    # Mensagem de boas vindas
+    inserir.title("Nova Rotina!")
+    lbl = Label(inserir, text= "Insira o código exclusivo dessa rotina: ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textt = Text(inserir, height = 0, width=20)
+    textt.grid(column= 0, row = 3)
+    def getTextInput():
+        result=textt.get("1.0","end")
+        print(result)
+    # Botão de inserção
+    btn = Button(inserir, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(inserir, text="Ok", command=lambda:Incodigo(inserir))
+    btn.grid(column =0, row = 5)
+    inserir.mainloop()
+
+def Incodigo(aba):
+
+    aba.destroy()
+    tarefa = Tk()
+    # Mensagem de boas vindas
+    tarefa.title("Nova Rotina!")
+    lbl = Label(tarefa, text= "Escreva o nome da tarefa: ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textc = Text(tarefa, height = 0, width=20)
+    textc.grid(column= 0, row = 3)
+    def getTextInput():
+        resultf=textc.get("1.0","end")
+        print(resultf)
+    # Botão de inserção
+    btn = Button(tarefa, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(tarefa, text="Ok", command=lambda:Inperiodo(tarefa))
+    btn.grid(column =0, row = 5)
+    tarefa.mainloop()
+
+def Inperiodo(aba):
+    aba.destroy()
+    peri = Tk()
+    # Mensagem de boas vindas
+    peri.title("Nova Rotina!")
+    lbl = Label(peri, text= "Para qual periodo adicionar ? Manha/Tarde/Noite ?  ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textp = Text(peri, height = 0, width=20)
+    textp.grid(column= 0, row = 3)
+    def getTextInput():
+        resultp=textp.get("1.0","end")
+        print(resultp)
+    # Botão de inserção
+    btn = Button(peri, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(peri, text="Ok", command=lambda:Indificuldade(peri))
+    btn.grid(column =0, row = 5)
+    peri.mainloop()
+
+def Indificuldade(aba):
+    aba.destroy()
+    difi = Tk()
+    # Mensagem de boas vindas
+    difi.title("Nova Rotina!")
+    lbl = Label(difi, text= "Qual dificuldade da tarefa ? Fácil/Difícil ?  ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textd = Text(difi, height = 0, width=20)
+    textd.grid(column= 0, row = 3)
+    def getTextInput():
+        resultd=textd.get("1.0","end")
+        print(resultd)
+    # Botão de inserção
+    btn = Button(difi, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(difi, text="Ok", command=lambda:Infinal(difi))
+    btn.grid(column =0, row = 5)
+    difi.mainloop()
+
+def Infinal(aba):
+    messagebox.showinfo(title ="UPday", message = "UP-UP! A tarefa foi cadastrada com sucesso!")
+    aba.destroy()
+
+    #editar rotina
+
+def editar():
+    editar = Tk()
+    # Mensagem de boas vindas
+    editar.title("Editando Rotina...!")
+    lbl = Label(editar, text= "Insira o id da tarefa a ser alterada: ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textt = Text(editar, height = 0, width=20)
+    textt.grid(column= 0, row = 3)
+    def getTextInput():
+        resulted=textt.get("1.0","end")
+        print(resulted)
+    # Botão de inserção
+    btn = Button(editar, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(editar, text="Ok", command=lambda:edvisua(editar))
+    btn.grid(column =0, row = 5)
+    editar.mainloop()
+
+def edvisua(aba):
+    aba.destroy()
+    variavel = "Amigo"
+    ver = Tk()
+    ver.title("Buscando.. ")
+    lbl = Label(ver, text= "O id foi encontrado. Seguem abaixo as informações da tarefa: ")
+    lbl.grid(column=0,row=0)
+    lbl2 = Label(ver, text= "{}".format(variavel))
+    lbl2.grid(column=0,row=2)
+    btn = Button(ver, text="Ok", command=lambda:edcodigo(ver))
+    btn.grid(column =0, row = 5)
+    ver.mainloop()
+
+def edcodigo(aba):
+
+    aba.destroy()
+    tarefa = Tk()
+    # Mensagem de boas vindas
+    tarefa.title("Editando Rotina...!")
+    lbl = Label(tarefa, text= "Escreva o nome da tarefa: ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textc = Text(tarefa, height = 0, width=20)
+    textc.grid(column= 0, row = 3)
+    def getTextInput():
+        resultfed=textc.get("1.0","end")
+        print(resultfed)
+    # Botão de inserção
+    btn = Button(tarefa, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(tarefa, text="Ok", command=lambda:edperiodo(tarefa))
+    btn.grid(column =0, row = 5)
+    tarefa.mainloop()
+
+def edperiodo(aba):
+    aba.destroy()
+    peri = Tk()
+    # Mensagem de boas vindas
+    peri.title("Editando Rotina...!")
+    lbl = Label(peri, text= "Para qual periodo adicionar ? Manha/Tarde/Noite ?  ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textp = Text(peri, height = 0, width=20)
+    textp.grid(column= 0, row = 3)
+    def getTextInput():
+        resultped=textp.get("1.0","end")
+        print(resultped)
+    # Botão de inserção
+    btn = Button(peri, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(peri, text="Ok", command=lambda:eddificuldade(peri))
+    btn.grid(column =0, row = 5)
+    peri.mainloop()
+
+def eddificuldade(aba):
+    aba.destroy()
+    difi = Tk()
+    # Mensagem de boas vindas
+    difi.title("!")
+    lbl = Label(difi, text= "Qual dificuldade da tarefa ? Fácil/Difícil ?  ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textd = Text(difi, height = 0, width=20)
+    textd.grid(column= 0, row = 3)
+    def getTextInput():
+        resultded=textd.get("1.0","end")
+        print(resultded)
+    # Botão de inserção
+    btn = Button(difi, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(difi, text="Ok", command=lambda:edfinal(difi))
+    btn.grid(column =0, row = 5)
+    difi.mainloop()
+
+def edfinal(aba):
+    messagebox.showinfo(title ="UPday", message = "UP-UP! A rotina foi editada com sucesso!")
+    aba.destroy()
+
+
+    #buscar rotina
+ 
+def buscar():
+    bs = Tk()
+    # Mensagem de boas vindas
+    bs.title("Buscando Rotina.. !")
+    lbl = Label(bs, text= "Insira o id da tarefa a ser encontrada : ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textt = Text(bs, height = 0, width=20)
+    textt.grid(column= 0, row = 3)
+    def getTextInput():
+        resultbs=textt.get("1.0","end")
+        print(resultbs)
+    # Botão de inserção
+    btn = Button(bs, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(bs, text="Ok", command=lambda:busvisua(bs))
+    btn.grid(column =0, row = 5)
+    bs.mainloop()
+
+def busvisua(aba):
+    aba.destroy()
+    variavel = "Amigo"
+    ver = Tk()
+    ver.title("Buscando.. ")
+    lbl = Label(ver, text= "a tarefa foi localizada. As informações da tarefa: ")
+    lbl.grid(column=0,row=0)
+    lbl2 = Label(ver, text= "{}".format(variavel))
+    lbl2.grid(column=0,row=2)
+    btn = Button(ver, text="Ok", command=lambda:bsfinal(ver))
+    btn.grid(column =0, row = 5)
+    ver.mainloop()
+
+def bsfinal(aba):
+    aba.destroy()
+
+    #visualizar rotina
+
+def visu():
+    variavel = "Amigo"
+    visu = Tk()
+    visu.title("Ver Rotina!")
+    lbl = Label(visu, text= "Estoque de tarefas : ")
+    lbl.grid(column=0,row=0)
+    lbl2 = Label(visu, text= "{}".format(variavel))
+    lbl2.grid(column=0,row=2)
+    btn = Button(visu, text="Ok", command=lambda:vsfinal(visu))
+    btn.grid(column =0, row = 5)
+    visu.mainloop()
+
+def vsfinal(aba):
+    aba.destroy()
+
+
+
+    # upday rotina
+   
+def upday():
+    pass
+
+
+
+#apagar rotina
+def apagar():
+    apaga = Tk()
+    variavelap = "amigo"
+    # Mensagem de boas vindas
+    apaga.title("Apagando rotina.. !")
+    lbl = Label(apaga, text= "Digite a numeração da tarefa a ser deletada : ")
+    lbl.grid(column=0,row=0)
+    lbl = Label(apaga, text= "a tarefa foi localizada. As informações da tarefa: ")
+    lbl.grid(column=0,row=0)
+    lbl2 = Label(apaga, text= "{}".format(variavelap))
+    lbl2.grid(column=0,row=2)
+    # Botão de inserção
+    btn = Button(apaga, text="Ok", command=lambda:apfinal(apaga))
+    btn.grid(column =0, row = 5)
+    apaga.mainloop()
+
+def apfinal(aba):
+    messagebox.showinfo(title ="UPday", message = "UP-UP! A rotina foi deletada com sucesso!")
+    aba.destroy()
+
+
+
+    #encerrar sessão
+class Interface():
+    def __init__(self):
+        pass
+
+    def mensagem(self,tipomsg,aba,txt):
+        messagebox.showinfo(title ="UPday", message = txt + "{}".format(tipomsg))
+        aba.destroy()
+
+    def boasvindas(self):
+        self.welcome = Tk()
+        vnum_cstexto = StringVar()
+        # Mensagem de boas vindas
+        self.welcome.title("Bem vindo ao UPday!")
+        welcomelbl = Label(self.welcome, text= """Olá! Bem vindo(a) à UPday!
+        Juntos podemos dar um 'Up' no seu dia ;)
+        Primeiramente, seria ótimo te conhecer mais um pouco.
+                Vamos começar?!""")
+        welcomelbl.grid(column=0,row=0)
+        # Caixa de inserção
+        welcometab = Entry(self.welcome, textvariable=vnum_cstexto)
+        welcometab.grid(column=0, row= 3)
+        # Mensagem na caixa de texto
+        vnum_cstexto.set("Nos diga o seu nome!")
+        # Botão de inserção
+        welcomebtn = Button(self.welcome, text="Mostrar mensagem", command=lambda:self.mensagem(vnum_cstexto.get(),self.welcome, "Bom te conhecer "))
+        welcomebtn.grid(column =0, row = 4)
+        self.welcome.mainloop()
+
+
+    def mainW(self):
+        self.mainW = Tk()
+        # Muda a corda janela principal
+        self.mainW.configure(background="lightblue")
+        # Titulo da janela
+        self.mainW.title("UPday")
+        # Traz janela para frente 
+        self.mainW.lift()
+        #Label com o nome do app, cor de fundo,texto e sua fonte
+        texto_inicial = Label(self.mainW, text = "UPday",bg = "lightblue",fg = "black")
+        texto_inicial.configure(font=("Segoe Print", 25))
+        texto_inicial.grid(column=1,row=0, padx = 100,pady = 300)
+
+        # Botão de inserção
+        insert = Button(self.mainW, text = "Nova Rotina", command= inserir)
+        insert.grid(column=0,row=6, padx = 10,pady = 10)
+        # Botão de edição
+        edit = Button(self.mainW, text= "Editar Rotina", command= editar)
+        edit.grid(column=0,row=7, padx = 10,pady = 10)
+        # Botão de buscar
+        search = Button(self.mainW, text= "Buscar Rotina", command=buscar)
+        search.grid(column=0,row=8, padx = 10,pady = 10)
+        # Botão de visualiza
+        check = Button(self.mainW, text= "Ver Rotina", command=visu)
+        check.grid(column=2,row=6, padx = 10,pady = 10)
+        # Botão de upday
+        Upd = Button(self.mainW, text = "UPday Rotina", command=upday)
+        Upd.grid(column=2,row=7, padx = 10,pady = 10)
+        # Botão de apagar
+        erase = Button(self.mainW, text = "Apagar Rotina", command=apagar)
+        erase.grid(column=2,row=8, padx = 10,pady = 10)
+
+        self.mainW.mainloop()
+
+        
+
+
+a = Interface()
+
+a.boasvindas()
+a.mainW()
