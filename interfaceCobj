@@ -32,7 +32,6 @@ def inserir():
     btn.grid(column =0, row = 5)
     inserir.mainloop()
 
-        #editar rotina
 def codigo(aba):
 
     aba.destroy()
@@ -98,7 +97,7 @@ def final(aba):
     messagebox.showinfo(title ="UPday", message = "UP-UP! A tarefa foi cadastrada com sucesso!")
     aba.destroy()
 
-
+    #editar rotina
 
 def editar():
     pass
