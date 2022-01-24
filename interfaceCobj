@@ -1,7 +1,9 @@
-from distutils import command
+
 from tkinter import *
 from tkinter import messagebox
 from tkinter import Tk
+from tokenize import String
+
 
 
 
@@ -12,9 +14,91 @@ from tkinter import Tk
 
 
 def inserir():
-    pass
+    inserir = Tk()
+    # Mensagem de boas vindas
+    inserir.title("Nova Rotina!")
+    lbl = Label(inserir, text= "Insira o código exclusivo dessa rotina: ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textt = Text(inserir, height = 0, width=20)
+    textt.grid(column= 0, row = 3)
+    def getTextInput():
+        result=textt.get("1.0","end")
+        print(result)
+    # Botão de inserção
+    btn = Button(inserir, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(inserir, text="Ok", command=lambda:codigo(inserir))
+    btn.grid(column =0, row = 5)
+    inserir.mainloop()
 
-    #editar rotina
+        #editar rotina
+def codigo(aba):
+
+    aba.destroy()
+    tarefa = Tk()
+    # Mensagem de boas vindas
+    tarefa.title("Nova Rotina!")
+    lbl = Label(tarefa, text= "Escreva o nome da tarefa: ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textc = Text(tarefa, height = 0, width=20)
+    textc.grid(column= 0, row = 3)
+    def getTextInput():
+        resultf=textc.get("1.0","end")
+        print(resultf)
+    # Botão de inserção
+    btn = Button(tarefa, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(tarefa, text="Ok", command=lambda:periodo(tarefa))
+    btn.grid(column =0, row = 5)
+    tarefa.mainloop()
+
+def periodo(aba):
+    aba.destroy()
+    peri = Tk()
+    # Mensagem de boas vindas
+    peri.title("Nova Rotina!")
+    lbl = Label(peri, text= "Para qual periodo adicionar ? Manha/Tarde/Noite ?  ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textp = Text(peri, height = 0, width=20)
+    textp.grid(column= 0, row = 3)
+    def getTextInput():
+        resultp=textp.get("1.0","end")
+        print(resultp)
+    # Botão de inserção
+    btn = Button(peri, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(peri, text="Ok", command=lambda:dificuldade(peri))
+    btn.grid(column =0, row = 5)
+    peri.mainloop()
+
+def dificuldade(aba):
+    aba.destroy()
+    difi = Tk()
+    # Mensagem de boas vindas
+    difi.title("Nova Rotina!")
+    lbl = Label(difi, text= "Qual dificuldade da tarefa ? Fácil/Difícil ?  ")
+    lbl.grid(column=0,row=0)
+    # Caixa de inserção
+    textd = Text(difi, height = 0, width=20)
+    textd.grid(column= 0, row = 3)
+    def getTextInput():
+        resultd=textd.get("1.0","end")
+        print(resultd)
+    # Botão de inserção
+    btn = Button(difi, text="Salvar", command= getTextInput)
+    btn.grid(column =0, row = 4)
+    btn = Button(difi, text="Ok", command=lambda:final(difi))
+    btn.grid(column =0, row = 5)
+    difi.mainloop()
+
+def final(aba):
+    messagebox.showinfo(title ="UPday", message = "UP-UP! A tarefa foi cadastrada com sucesso!")
+    aba.destroy()
+
+
 
 def editar():
     pass
@@ -50,8 +134,8 @@ class Interface():
     def __init__(self):
         pass
 
-    def mensagem(self,tipomsg,aba):
-        messagebox.showinfo(title ="UPday", message = "Bom te conhecer {}".format(tipomsg))
+    def mensagem(self,tipomsg,aba,txt):
+        messagebox.showinfo(title ="UPday", message = txt + "{}".format(tipomsg))
         aba.destroy()
 
     def boasvindas(self):
@@ -70,7 +154,7 @@ class Interface():
         # Mensagem na caixa de texto
         vnum_cstexto.set("Nos diga o seu nome!")
         # Botão de inserção
-        welcomebtn = Button(self.welcome, text="Mostrar mensagem", command=lambda:self.mensagem(vnum_cstexto.get(),self.welcome))
+        welcomebtn = Button(self.welcome, text="Mostrar mensagem", command=lambda:self.mensagem(vnum_cstexto.get(),self.welcome, "Bom te conhecer "))
         welcomebtn.grid(column =0, row = 4)
         self.welcome.mainloop()
 
@@ -81,8 +165,6 @@ class Interface():
         self.mainW.configure(background="lightblue")
         # Titulo da janela
         self.mainW.title("UPday")
-        # Tamanho janela principal
-        #mainwindow.geometry("1280x720")
         # Traz janela para frente 
         self.mainW.lift()
         #Label com o nome do app, cor de fundo,texto e sua fonte
@@ -110,6 +192,8 @@ class Interface():
         erase.grid(column=2,row=8, padx = 10,pady = 10)
 
         self.mainW.mainloop()
+
+        
 
 
 a = Interface()
