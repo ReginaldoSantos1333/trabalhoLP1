@@ -1,0 +1,218 @@
+from tkinter import *
+from tkinter import messagebox
+from upday import upday
+result = ""
+def existe_rotina(rotinas, id):
+    if len(rotinas)>0:
+        for tarefa in rotinas:
+            if tarefa['id'] == id:
+                return True
+        return False
+    return False
+
+
+def inserir(rotinas):
+    
+    while True:
+        id = input("Insira o código exclusivo dessa rotina: ")
+        
+        if not existe_rotina(rotinas, id):
+            break
+        else:
+            print("Esse código já está sendo utilizado.")
+            print("Por favor, tente um novo e-mail.")
+            
+
+    tarefa = {
+        "nr": input("Escreva uma nova tarefa para sua rotina\n"),
+        "p": input("Para qual período do dia (Manha/Tarde/Noite) você gostaria de fazer essa tarefa?\n"),
+        "d": input("Como você classifica essa atividade (Facil/Dificil)?\n"),
+        "id": id
+    }
+
+    rotinas.append(tarefa)
+    print("UP-UP! A tarefa foi cadastrada com sucesso!\n")
+
+def editar(rotinas):
+    print(" == Vamos mudar algumas coisas ==")
+    if len(rotinas) > 0:
+        id = input("Insira o id da tarefa a ser alterada: ")
+        if existe_rotina(rotinas, id):
+            print("O id foi encontrado. Seguem abaixo as informações da tarefa: ")
+            for tarefa in rotinas:
+                if tarefa['id'] == id:
+                    print("\tTarefa: {}:".format(tarefa['nr']))
+                    print("\tPeríodo: {}:".format(tarefa['p']))
+                    print("\tDificuldade: {}:".format(tarefa['d']))
+                    print("\tIdentificação: {}:".format(tarefa['id']))
+                    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n")
+
+                    rotinas['nr'] = input("Insira a nova rotina: ")
+                    rotinas['p'] = input("Insira o novo período: ")
+                    rotinas['d'] = input("Insira a dificuldade: ")
+
+                    print("UP-UP! Os dados foram alterados com sucesso!")
+                    break
+        else:
+            print("Não existe tarefa cadastrada no sistema com esse id\n")
+    else:
+        print("Não existe nenhuma tarefa cadastrada no roteiro.\n")             
+
+                    
+
+
+
+def buscar(rotinas):
+    print(" == Onde estão aquelas Tarefas?! == ")
+    if len(rotinas) > 0:
+        id = input("Digite o Id da tarefa a ser encontrada: ")
+        if existe_rotina(rotinas, id):
+            print("A tarefa foi localizada. As informações sobre tal são: ")
+            for tarefa in rotinas:
+                if tarefa['id'] == id:
+                    print("\tTarefa: {}:".format(tarefa['nr']))
+                    print("\tPeríodo: {}:".format(tarefa['p']))
+                    print("\tDificuldade: {}:".format(tarefa['d']))
+                    print("\tIdentificação: {}:".format(tarefa['id']))
+                    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n")
+                    break
+        else:
+            print("Não existe tarefa cadastrada no sistema com esse id.\n")
+    else:
+        print("Não existe nenhuma tarefa cadastrada no roteiro.\n")             
+
+
+
+def visualizar(rotinas):
+    print(" == Estoque de Tarefas == ")
+    if len(rotinas) > 0:
+        for i, tarefa in enumerate(rotinas):
+            print("Tarefa Nº{}:".format(i+1))
+            print("\tTarefa: {}:".format(tarefa['nr']))
+            print("\tPeríodo: {}:".format(tarefa['p']))
+            print("\tDificuldade: {}:".format(tarefa['d']))
+            print("\tIdentificação: {}:".format(tarefa['id']))
+            print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+
+        print("Quantidade de Tarefas Registradas: {}\n".format(len(rotinas)))
+    else:
+        print("Não foi encontrado nenhuma rotina no nosso sistema :(\n")
+
+    
+
+def apagar(rotinas):
+    print("Ficou monótono? :/")
+    if len(rotinas) > 0:
+        id = input("Digite a numeração da tarefa a ser deletada: ")
+        if existe_rotina(rotinas, id):
+            print("Tarefa encontrada! As informações da mesma se apresentam abaixo: ")
+            for i, tarefa in enumerate(rotinas):
+                if tarefa['id'] == id:
+                    print("Tarefa Nº{}:".format(i+1))
+                    print("\tTarefa: {}:".format(tarefa['nr']))
+                    print("\tPeríodo: {}:".format(tarefa['p']))
+                    print("\tDificuldade: {}:".format(tarefa['d']))
+                    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+
+                    del rotinas[i]
+                    print("UP-UP! A rotina foi deletada com sucesso!")
+                    break
+        else:
+            print("Não existe nenhuma tarefa com essa numeração\n")
+    else:
+        print("Me parece que você ainda não adicionou nenhuma tarefa ainda... só acho...\n")
+
+
+
+
+#As funções estão reunidas em outro código para organização
+
+#Aqui é a base central do funcionamento do aplicativo
+def principal():
+    
+    #Dicionário
+    rotinas = []
+
+    
+    janela1 = Tk()
+    def exit():
+        janela1.destroy()
+    text_label = Label(janela1, text = """Olá! Bem vindo(a) à UPday!")
+    Juntos podemos dar um 'Up' no seu dia ;)")
+        Primeiramente, seria ótimo te conhecer mais um pouco. Vamos começar?!
+        =====================================================
+    """)
+    text_label.pack()
+    botao1 = Button(janela1, text= "Ok!", command = exit)
+    botao1.pack()
+
+    janela1.mainloop()
+    
+    janela2 = Tk()
+    def exit():
+        janela2.destroy()
+    def getnome():
+        var=boxTXT.get("1.0","end")
+        result = var
+        wcm = Toplevel()
+        wcm.title("Bem Vindo!")
+        l2 = Label(wcm, text = "Ficamos muito felizes em te conhecer {}".format(result))
+        l2.pack(pady=20)
+        l3 = Label(wcm ,text = "Agora, vamos começar a dar o 'UP' que sua rotina precisa :)")
+        l3.pack(pady=20)
+        l4 = Label(wcm, text = "Aqui está o menu do seu gerador de rotina pessoal, {}".format(result))
+        l4.pack(pady=20)
+        l5 = Label(wcm, text = "Experimente!")
+        l5.pack(pady=20)
+        botaoOk = Button(wcm, text = "Ok!", command= exit)
+        botaoOk.pack(pady=20)
+    janela2.title("Bem Vindo!")
+    text_label = Label (janela2, text= "Digite seu nome :")
+    text_label.pack(padx=60)    
+    boxTXT = Text(janela2, height = 0, width=12)
+    boxTXT.pack()
+    botao1 = Button(janela2, text= "Pronto!", command = getnome)
+    botao1.pack()
+    
+
+
+    mainW = Tk()
+    # Muda a corda janela principal
+    mainW.configure(background="lightblue")
+    # Titulo da janela
+    mainW.title("UPday")
+    # Traz janela para frente 
+    mainW.lift()
+    #Label com o nome do app, cor de fundo,texto e sua fonte
+    texto_inicial = Label(mainW, text = "UPday",bg = "lightblue",fg = "black")
+    texto_inicial.configure(font=("Segoe Print", 60))
+    texto_inicial.grid(column=1,row=0, padx = 100,pady = 300)
+    # Botão de inserção
+    insert = Button(mainW, text = "Nova Rotina", command= lambda: inserir(rotinas))
+    insert.grid(column=0,row=6, padx = 10,pady = 10)
+    # Botão de edição
+    edit = Button(mainW, text= "Editar Rotina", command=lambda: editar(rotinas))
+    edit.grid(column=0,row=7, padx = 10,pady = 10)
+    # Botão de buscar
+    search = Button(mainW, text= "Buscar Rotina", command=lambda:buscar(rotinas))
+    search.grid(column=0,row=8, padx = 10,pady = 10)
+    # Botão de visualiza
+    check = Button(mainW, text= "Ver Rotina", command=lambda: visualizar(rotinas))
+    check.grid(column=2,row=6, padx = 10,pady = 10)
+    # Botão de upday
+    Upd = Button(mainW, text = "UPday Rotina", command=lambda: upday(rotinas))
+    Upd.grid(column=2,row=7, padx = 10,pady = 10)
+    # Botão de apagar
+    erase = Button(mainW, text = "Apagar Rotina", command=lambda: apagar(rotinas))
+    erase.grid(column=2,row=8, padx = 10,pady = 10)
+
+    def on_closing():
+        if messagebox.askokcancel("Fechar", "Quer mesmo sair ?"):
+            messagebox.showinfo(title="Até logo!", message="Lembre-se, sempre há tempo para dar um 'UP' na sua vida!")
+            mainW.destroy()
+
+    mainW.protocol("WM_DELETE_WINDOW", on_closing)
+    mainW.mainloop()
+    
+
+principal()
