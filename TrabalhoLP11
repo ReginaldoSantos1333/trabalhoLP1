@@ -1,3 +1,4 @@
+from doctest import master
 from tkinter import *
 from tkinter import messagebox
 from upday import upday
@@ -28,67 +29,46 @@ def inserir(rotinas):
             else:
                 messagebox.showerror(title="Error", message="Esse código já está sendo utilizado.")
                 messagebox.showerror(title="Error", message="Por favor, tente um novo e-mail.")
-        tarefa = {
-            "nr",
-            "p",
-            "d",
-            "id"
-                }
-        varid=inboxTXT.get("1.0","end")
-        tarefa["id":varid]
+
+        varid=idboxTXT.get(1.0,"end")
         tff = Toplevel()
         tff.title("Upday!")
-        inlb = Label(tff, text = "Escreva uma nova tarefa para sua rotina!")
-        inlb.pack(pady=20)
+        idlb = Label(tff, text = "Escreva uma nova tarefa para sua rotina!")
+        idlb.pack(pady=20)
         def ingetnome2():
-            vartf = inboxTXT.get("1.0", "end")
-            tarefa["nr"] = vartf
+            vartf = tfboxTXT.get(1.0, "end")
             pp = Toplevel()
             pp.title("Upday!")
-            inlb = Label(tff, text = "Para qual período do dia (Manha/Tarde/Noite) você gostaria de fazer essa tarefa?")
-            inlb.pack(pady=20)
+            pplb = Label(pp, text = "Para qual período do dia (Manha/Tarde/Noite) você gostaria de fazer essa tarefa?")
+            pplb.pack(pady=20)
             def ingetnome3():
-                varpp = inboxTXT.get("1.0", "end")
-                tarefa["p"] = varpp
+                varpp = ppboxTXT.get(1.0, "end")
                 dd = Toplevel()
                 dd.title("Upday!")
-                inlb = Label(tff, text = "Como você classifica essa atividade (Facil/Dificil)?")
-                inlb.pack(pady=20)
+                ddlb = Label(dd, text = "Como você classifica essa atividade (Facil/Dificil)?")
+                ddlb.pack(pady=20)
                 def ingetnome4():
-                    vardd = inboxTXT.get("1.0", "end")
-                    tarefa["d"] = vardd
+                    vardd = ddboxTXT.get(1.0, "end")
+                    tarefa = {"nr":vartf,"p":varpp,"d":vardd,"id":varid}
+                    rotinas.append(tarefa)
                     inexit()
-                in4boxTXT = Text(insere, height = 0, width=12)
-                in4boxTXT.pack(pady = 30)
+                ddboxTXT = Text(insere, height = 0, width=12)
+                ddboxTXT.pack(pady = 30)
                 in4botao1 = Button(insere, text= "Pronto!", command = ingetnome4)
                 in4botao1.pack(pady = 30)
-            in3boxTXT = Text(insere, height = 0, width=12)
-            in3boxTXT.pack(pady = 30)
+            ppboxTXT = Text(insere, height = 0, width=12)
+            ppboxTXT.pack(pady = 30)
             in3botao1 = Button(insere, text= "Pronto!", command = ingetnome3)
             in3botao1.pack(pady = 30)
-        in2boxTXT = Text(insere, height = 0, width=12)
-        in2boxTXT.pack(pady = 30)
+        tfboxTXT = Text(insere, height = 0, width=12)
+        tfboxTXT.pack(pady = 30)
         in2botao1 = Button(insere, text= "Pronto!", command = ingetnome2)
         in2botao1.pack(pady = 30)
-    
-        rotinas.append(tarefa)
-    inboxTXT = Text(insere, height = 0, width=12)
-    inboxTXT.pack(pady = 30)
+    idboxTXT = Text(insere, height = 0, width=12)
+    idboxTXT.pack(pady = 30)
     inbotao1 = Button(insere, text= "Pronto!", command = ingetnome)
     inbotao1.pack(pady = 30)
     insere.mainloop()
-
-
-       
-    tarefa = {
-        "nr": input("Escreva uma nova tarefa para sua rotina\n"),
-        "p": input("Para qual período do dia (Manha/Tarde/Noite) você gostaria de fazer essa tarefa?\n"),
-        "d": input("Como você classifica essa atividade (Facil/Dificil)?\n"),
-        "id": id
-    }
-
-    rotinas.append(tarefa)
-    print("UP-UP! A tarefa foi cadastrada com sucesso!\n")
 
 def editar(rotinas):
     print(" == Vamos mudar algumas coisas ==")
