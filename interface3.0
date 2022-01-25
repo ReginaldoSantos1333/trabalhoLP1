@@ -4,448 +4,436 @@ from tkinter import Tk
 
 #inserçãorotina
 
-class Insere():
-    def __init__(self):
-        pass
         
-    def getTextInput(self,jan,result):
-            boxTXT = Text(jan, height = 0, width=20)
-            boxTXT.grid(column= 0, row = 3)
-            result=boxTXT.get("1.0","end")
-            return result
-        
-    def inserir(self):
-        inserirID = Tk()
-        # Mensagem de boas vindas
-        inserirID.title("Criando rotina..")
-        titleLabel = Label(inserirID, text= "Insira o código exclusivo dessa rotina: ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Caixa de inserção
-        boxTXT = Text(inserirID, height = 0, width=20)
+def getTextInput(jan,result):
+        boxTXT = Text(jan, height = 0, width=20)
         boxTXT.grid(column= 0, row = 3)
-        # Botão de inserção
-        buttonGet = Button(inserirID, text="Salvar", command= lambda: self.getTextInput(inserirID,"1"))
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(inserirID, text="Ok", command=lambda:self.inserirTask(inserirID))
-        buttonConfirm.grid(column =0, row = 5)
-        inserirID.mainloop()
+        result=boxTXT.get("1.0","end")
+        return result
+    
+def inserir():
+    inserirID = Tk()
+    # Mensagem de boas vindas
+    inserirID.title("Criando rotina..")
+    titleLabel = Label(inserirID, text= "Insira o código exclusivo dessa rotina: ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Caixa de inserção
+    boxTXT = Text(inserirID, height = 0, width=20)
+    boxTXT.grid(column= 0, row = 3)
+    # Botão de inserção
+    buttonGet = Button(inserirID, text="Salvar", command= lambda:getTextInput(inserirID,"1"))
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(inserirID, text="Ok", command=lambda:inserirTask(inserirID))
+    buttonConfirm.grid(column =0, row = 5)
+    inserirID.mainloop()
 
-    def inserirTask(self,aba):
+def inserirTask(aba):
 
-        aba.destroy()
-        inserirTk = Tk()
-        # Mensagem de boas vindas
-        inserirTk.title("Criando rotina..")
-        titleLabel = Label(inserirTk, text= "Escreva o nome da tarefa: ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Botão de inserção
-        buttonGet = Button(inserirTk, text="Salvar", command=lambda: self.getTextInput(inserirTk,"2"))
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(inserirTk, text="Ok", command=lambda:self.inserirTime(inserirTk))
-        buttonConfirm.grid(column =0, row = 5)
-        inserirTk.mainloop()
+    aba.destroy()
+    inserirTk = Tk()
+    # Mensagem de boas vindas
+    inserirTk.title("Criando rotina..")
+    titleLabel = Label(inserirTk, text= "Escreva o nome da tarefa: ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Botão de inserção
+    buttonGet = Button(inserirTk, text="Salvar", command=lambda:getTextInput(inserirTk,"2"))
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(inserirTk, text="Ok", command=lambda:inserirTime(inserirTk))
+    buttonConfirm.grid(column =0, row = 5)
+    inserirTk.mainloop()
 
-    def inserirTime(self,aba):
-        aba.destroy()
-        inserirTm = Tk()
-        # Mensagem de boas vindas
-        inserirTm.title("Criando rotina..")
-        titleLabel = Label(inserirTm, text= "Para qual periodo adicionar ? Manha/Tarde/Noite ?  ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Botão de inserção
-        buttonGet = Button(inserirTm, text="Salvar", command=lambda: self.getTextInput(inserirTm,"3"))
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(inserirTm, text="Ok", command=lambda:self.inserirLevel(inserirTm))
-        buttonConfirm.grid(column =0, row = 5)
-        inserirTm.mainloop()
+def inserirTime(aba):
+    aba.destroy()
+    inserirTm = Tk()
+    # Mensagem de boas vindas
+    inserirTm.title("Criando rotina..")
+    titleLabel = Label(inserirTm, text= "Para qual periodo adicionar ? Manha/Tarde/Noite ?  ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Botão de inserção
+    buttonGet = Button(inserirTm, text="Salvar", command=lambda: getTextInput(inserirTm,"3"))
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(inserirTm, text="Ok", command=lambda:inserirLevel(inserirTm))
+    buttonConfirm.grid(column =0, row = 5)
+    inserirTm.mainloop()
 
-    def inserirLevel(self,aba):
-        aba.destroy()
-        inserirLvl = Tk()
-        # Mensagem de boas vindas
-        inserirLvl.title("Criando rotina..")
-        titleLabel = Label(inserirLvl, text= "Qual dificuldade da tarefa ? Fácil/Difícil ?  ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Botão de inserção
-        buttonGet = Button(inserirLvl, text="Salvar", command=lambda: self.getTextInput(inserirLvl,"4"))
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(inserirLvl, text="Ok", command=lambda:self.inserirEND(inserirLvl))
-        buttonConfirm.grid(column =0, row = 5)
-        inserirLvl.mainloop()
+def inserirLevel(aba):
+    aba.destroy()
+    inserirLvl = Tk()
+    # Mensagem de boas vindas
+    inserirLvl.title("Criando rotina..")
+    titleLabel = Label(inserirLvl, text= "Qual dificuldade da tarefa ? Fácil/Difícil ?  ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Botão de inserção
+    buttonGet = Button(inserirLvl, text="Salvar", command=lambda:getTextInput(inserirLvl,"4"))
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(inserirLvl, text="Ok", command=lambda:inserirEND(inserirLvl))
+    buttonConfirm.grid(column =0, row = 5)
+    inserirLvl.mainloop()
 
-    def inserirEND(self,aba):
-        messagebox.showinfo(title ="UPday", message = "UP-UP! A tarefa foi cadastrada com sucesso!")
-        aba.destroy()
+def inserirEND(aba):
+    messagebox.showinfo(title ="UPday", message = "UP-UP! A tarefa foi cadastrada com sucesso!")
+    aba.destroy()
 
-class Editar():
-    def __init__(self):
-        pass
 
-    def getTextInput(self,jan,result):
-            boxTXT = Text(jan, height = 0, width=20)
-            boxTXT.grid(column= 0, row = 3)
-            result=boxTXT.get("1.0","end")
-            return result
 
-    def editar(self):
-        editarID = Tk()
-        # Mensagem de boas vindas
-        editarID.title("Editando Rotina...!")
-        titleLabel = Label(editarID, text= "Insira o id da tarefa a ser alterada: ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Caixa de inserção
-        boxTXT = Text(editarID, height = 0, width=20)
+def getTextInput(jan,result):
+        boxTXT = Text(jan, height = 0, width=20)
         boxTXT.grid(column= 0, row = 3)
-        # Botão de inserção
-        buttonGet = Button(editarID, text="Salvar", command= self.getTextInput)
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(editarID, text="Ok", command=lambda:self.editarSHOW(editarID))
-        buttonConfirm.grid(column =0, row = 5)
-        editarID.mainloop()
+        result=boxTXT.get("1.0","end")
+        return result
 
-    def editarSHOW(self,aba):
-        aba.destroy()
-        variavel = "Amigo"
-        editarSW = Tk()
-        editarSW.title("Editando Rotina...")
-        titleLabel = Label(editarSW, text= "O id foi encontrado. Seguem abaixo as informações da tarefa: ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        textLabel = Label(editarSW, text= "{}".format(variavel))
-        textLabel.grid(column=0,row=2)
-        buttonConfirm = Button(editarSW, text="Ok", command=lambda:self.editarTask(editarSW))
-        buttonConfirm.grid(column =0, row = 5)
-        editarSW.mainloop()
+def editar():
+    editarID = Tk()
+    # Mensagem de boas vindas
+    editarID.title("Editando Rotina...!")
+    titleLabel = Label(editarID, text= "Insira o id da tarefa a ser alterada: ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Caixa de inserção
+    boxTXT = Text(editarID, height = 0, width=20)
+    boxTXT.grid(column= 0, row = 3)
+    # Botão de inserção
+    buttonGet = Button(editarID, text="Salvar", command= getTextInput)
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(editarID, text="Ok", command=lambda:editarSHOW(editarID))
+    buttonConfirm.grid(column =0, row = 5)
+    editarID.mainloop()
 
-    def editarTask(self,aba):
+def editarSHOW(aba):
+    aba.destroy()
+    variavel = "Amigo"
+    editarSW = Tk()
+    editarSW.title("Editando Rotina...")
+    titleLabel = Label(editarSW, text= "O id foi encontrado. Seguem abaixo as informações da tarefa: ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    textLabel = Label(editarSW, text= "{}".format(variavel))
+    textLabel.grid(column=0,row=2)
+    buttonConfirm = Button(editarSW, text="Ok", command=lambda:editarTask(editarSW))
+    buttonConfirm.grid(column =0, row = 5)
+    editarSW.mainloop()
 
-        aba.destroy()
-        editarTk = Tk()
-        # Mensagem de boas vindas
-        editarTk.title("Editando Rotina...")
-        titleLabel = Label(editarTk, text= "Escreva o nome da tarefa: ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Caixa de inserção
-        boxTXT = Text(editarTk, height = 0, width=20)
-        boxTXT.grid(column= 0, row = 3)
-        # Botão de inserção
-        buttonGet= Button(editarTk, text="Salvar", command= self.getTextInput)
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm= Button(editarTk, text="Ok", command=lambda:self.editarTime(editarTk))
-        buttonConfirm.grid(column =0, row = 5)
-        editarTk.mainloop()
+def editarTask(aba):
 
-    def editarTime(self,aba):
-        aba.destroy()
-        editarTm = Tk()
-        # Mensagem de boas vindas
-        editarTm.title("Editando Rotina...")
-        titleLabel = Label(editarTm, text= "Para qual periodo adicionar ? Manha/Tarde/Noite ?  ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Caixa de inserção
-        boxTXT = Text(editarTm, height = 0, width=20)
-        boxTXT.grid(column= 0, row = 3)
-        # Botão de inserção
-        buttonGet= Button(editarTm, text="Salvar", command= self.getTextInput)
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(editarTm, text="Ok", command=lambda:self.editarLevel(editarTm))
-        buttonConfirm.grid(column =0, row = 5)
-        editarTm.mainloop()
+    aba.destroy()
+    editarTk = Tk()
+    # Mensagem de boas vindas
+    editarTk.title("Editando Rotina...")
+    titleLabel = Label(editarTk, text= "Escreva o nome da tarefa: ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Caixa de inserção
+    boxTXT = Text(editarTk, height = 0, width=20)
+    boxTXT.grid(column= 0, row = 3)
+    # Botão de inserção
+    buttonGet= Button(editarTk, text="Salvar", command= getTextInput)
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm= Button(editarTk, text="Ok", command=lambda:editarTime(editarTk))
+    buttonConfirm.grid(column =0, row = 5)
+    editarTk.mainloop()
 
-    def editarLevel(self,aba):
-        aba.destroy()
-        editarLvl = Tk()
-        # Mensagem de boas vindas
-        editarLvl.title("Editando Rotina...")
-        titleLabel = Label(editarLvl, text= "Qual dificuldade da tarefa ? Fácil/Difícil ?  ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Caixa de inserção
-        boxTXT = Text(editarLvl, height = 0, width=20)
-        boxTXT.grid(column= 0, row = 3)
-        # Botão de inserção
-        buttonGet = Button(editarLvl, text="Salvar", command= self.getTextInput)
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(editarLvl, text="Ok", command=lambda:self.editarEND(editarLvl))
-        buttonConfirm.grid(column =0, row = 5)
-        editarLvl.mainloop()
+def editarTime(aba):
+    aba.destroy()
+    editarTm = Tk()
+    # Mensagem de boas vindas
+    editarTm.title("Editando Rotina...")
+    titleLabel = Label(editarTm, text= "Para qual periodo adicionar ? Manha/Tarde/Noite ?  ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Caixa de inserção
+    boxTXT = Text(editarTm, height = 0, width=20)
+    boxTXT.grid(column= 0, row = 3)
+    # Botão de inserção
+    buttonGet= Button(editarTm, text="Salvar", command= getTextInput)
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(editarTm, text="Ok", command=lambda:editarLevel(editarTm))
+    buttonConfirm.grid(column =0, row = 5)
+    editarTm.mainloop()
 
-    def editarEND(self,aba):
-        messagebox.showinfo(title ="UPday", message = "UP-UP! A rotina foi editada com sucesso!")
-        aba.destroy()
+def editarLevel(aba):
+    aba.destroy()
+    editarLvl = Tk()
+    # Mensagem de boas vindas
+    editarLvl.title("Editando Rotina...")
+    titleLabel = Label(editarLvl, text= "Qual dificuldade da tarefa ? Fácil/Difícil ?  ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Caixa de inserção
+    boxTXT = Text(editarLvl, height = 0, width=20)
+    boxTXT.grid(column= 0, row = 3)
+    # Botão de inserção
+    buttonGet = Button(editarLvl, text="Salvar", command= getTextInput)
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(editarLvl, text="Ok", command=lambda:editarEND(editarLvl))
+    buttonConfirm.grid(column =0, row = 5)
+    editarLvl.mainloop()
 
+def editarEND(aba):
+    messagebox.showinfo(title ="UPday", message = "UP-UP! A rotina foi editada com sucesso!")
+    aba.destroy()
 
-class Buscar():
-    def __init__(self):
-        pass
 
     #buscar rotina
 
-    def getTextInput(self,jan,result):
-            boxTXT = Text(jan, height = 0, width=20)
-            boxTXT.grid(column= 0, row = 3)
-            result=boxTXT.get("1.0","end")
-            return result
-
-    def buscar(self):
-        buscarID = Tk()
-        # Mensagem de boas vindas
-        buscarID.title("Buscando rotinas..")
-        titleLabel = Label(buscarID, text= "Insira o id da tarefa a ser encontrada : ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        # Caixa de inserção
-        boxTXT = Text(buscarID, height = 0, width=20)
+def getTextInput(jan,result):
+        boxTXT = Text(jan, height = 0, width=20)
         boxTXT.grid(column= 0, row = 3)
+        result=boxTXT.get("1.0","end")
+        return result
+
+def buscar():
+    buscarID = Tk()
+    # Mensagem de boas vindas
+    buscarID.title("Buscando rotinas..")
+    titleLabel = Label(buscarID, text= "Insira o id da tarefa a ser encontrada : ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    # Caixa de inserção
+    boxTXT = Text(buscarID, height = 0, width=20)
+    boxTXT.grid(column= 0, row = 3)
+    # Botão de inserção
+    buttonGet = Button(buscarID, text="Salvar", command= getTextInput)
+    buttonGet.grid(column =0, row = 4)
+    buttonConfirm = Button(buscarID, text="Ok", command=lambda:buscarSHOW(buscarID))
+    buttonConfirm.grid(column =0, row = 5)
+    buscarID.mainloop()
+
+def buscarSHOW(aba):
+    aba.destroy()
+    variavel = "Amigo"
+    buscarSW = Tk()
+    buscarSW.title("Buscando rotinas..")
+    titleLabel = Label(buscarSW, text= "a tarefa foi localizada. As informações da tarefa: ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    textLabel = Label(buscarSW, text= "{}".format(variavel))
+    textLabel.grid(column=0,row=2)
+    buttonConfirm = Button(buscarSW, text="Ok", command=lambda:buscarEND(buscarSW))
+    buttonConfirm.grid(column =0, row = 5)
+    buscarSW.mainloop()
+
+def buscarEND(aba):
+    aba.destroy()
+
+
+    
+
+def verRotina():
+    variavel = "Amigo"
+    RotinaSW = Tk()
+    RotinaSW.title("Visualizando rotinas..")
+    titleLabel= Label(RotinaSW, text= "Estoque de tarefas : ")
+    titleLabel.grid(column=0,row=0,padx = 120, pady = 30)
+    textLabel= Label(RotinaSW, text= "{}".format(variavel))
+    textLabel.grid(column=0,row=2)
+    buttonConfirm= Button(RotinaSW, text="Ok", command=lambda:verRotinaEND(RotinaSW))
+    buttonConfirm.grid(column =0, row = 5)
+    RotinaSW.mainloop()
+
+def verRotinaEND(aba):
+    aba.destroy()
+
+    
+
+
+#apagar rotina
+def apagar():
+    apagaTask = Tk()
+    # Mensagem de boas vindas
+    apagaTask.title("Apagando tarefa.. ")
+    titleLabel = Label(apagaTask, text= "Digite a numeração da tarefa a ser deletada : ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    boxTXT = Text(apagaTask, height = 0, width=20)
+    boxTXT.grid(column= 0, row = 3)
+
+    def getTextInput():
+        apagarTkID=boxTXT.get("1.0","end")
+        variavelap = "amigo"
+        localizaTask = Tk()
+        titleLabel = Label(localizaTask, text= "A tarefa foi localizada. As informações da tarefa: ")
+        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+        textLabel = Label(localizaTask, text= "{}".format(variavelap))
+        textLabel.grid(column=0,row=2)
         # Botão de inserção
-        buttonGet = Button(buscarID, text="Salvar", command= self.getTextInput)
-        buttonGet.grid(column =0, row = 4)
-        buttonConfirm = Button(buscarID, text="Ok", command=lambda:self.buscarSHOW(buscarID))
+        buttonConfirm = Button(localizaTask, text="Ok", command=lambda:apagarEND(localizaTask,apagaTask))
         buttonConfirm.grid(column =0, row = 5)
-        buscarID.mainloop()
+        localizaTask.mainloop
 
-    def buscarSHOW(self,aba):
+
+    def apagarEND(aba,aba2):
+        messagebox.showinfo(title ="UPday", message = "UP-UP! A rotina foi deletada com sucesso!")
         aba.destroy()
-        variavel = "Amigo"
-        buscarSW = Tk()
-        buscarSW.title("Buscando rotinas..")
-        titleLabel = Label(buscarSW, text= "a tarefa foi localizada. As informações da tarefa: ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        textLabel = Label(buscarSW, text= "{}".format(variavel))
-        textLabel.grid(column=0,row=2)
-        buttonConfirm = Button(buscarSW, text="Ok", command=lambda:self.buscarEND(buscarSW))
-        buttonConfirm.grid(column =0, row = 5)
-        buscarSW.mainloop()
-
-    def buscarEND(self,aba):
-        aba.destroy()
-
-
-class Visualizar():
-    def __init__(self):
-        pass
-    def verRotina(self):
-        variavel = "Amigo"
-        RotinaSW = Tk()
-        RotinaSW.title("Visualizando rotinas..")
-        titleLabel= Label(RotinaSW, text= "Estoque de tarefas : ")
-        titleLabel.grid(column=0,row=0,padx = 120, pady = 30)
-        textLabel= Label(RotinaSW, text= "{}".format(variavel))
-        textLabel.grid(column=0,row=2)
-        buttonConfirm= Button(RotinaSW, text="Ok", command=lambda:self.verRotinaEND(RotinaSW))
-        buttonConfirm.grid(column =0, row = 5)
-        RotinaSW.mainloop()
-
-    def verRotinaEND(self,aba):
-        aba.destroy()
-
-
-class Apaga():
-    def __init__(self):
-        pass
-    #apagar rotina
-    def apagar(self):
-        apagaTask = Tk()
-        # Mensagem de boas vindas
-        apagaTask.title("Apagando tarefa.. ")
-        titleLabel = Label(apagaTask, text= "Digite a numeração da tarefa a ser deletada : ")
-        titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-        boxTXT = Text(apagaTask, height = 0, width=20)
-        boxTXT.grid(column= 0, row = 3)
-        def getTextInput():
-            apagarTkID=boxTXT.get("1.0","end")
-            variavelap = "amigo"
-            localizaTask = Tk()
-            titleLabel = Label(localizaTask, text= "A tarefa foi localizada. As informações da tarefa: ")
-            titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-            textLabel = Label(localizaTask, text= "{}".format(variavelap))
-            textLabel.grid(column=0,row=2)
-            # Botão de inserção
-            buttonConfirm = Button(localizaTask, text="Ok", command=lambda:apagarEND(localizaTask,apagaTask))
-            buttonConfirm.grid(column =0, row = 5)
-            localizaTask.mainloop
-            
-            print(apagarTkID)
-
-            def apagarEND(aba,aba2):
-                messagebox.showinfo(title ="UPday", message = "UP-UP! A rotina foi deletada com sucesso!")
-                aba.destroy()
-                aba2.destroy()
+        aba2.destroy()
         buttonGet = Button(apagaTask, text="Deletar", command= getTextInput)
         buttonGet.grid(column =0, row = 4)
-        
+
         apagaTask.mainloop()
 
 
-class Sortear():
-        def __init__(self):
-             pass
 
-        def easy(self):
-            es = Tk() 
-            es.title("Rotina facil")
-            label1 = Label(es, text = "Acordar - 06:20h")
-            label2 = Label(es, text = "Banho - 06:40h")
-            label3 = Label(es, text = "Café da Manhã - 06:55h")
-            label4 = Label(es, text = "{} - 07:10h-08h")
-            label5 = Label(es, text = "Aula/Estudo - 08h-10h")
-            label6 = Label(es, text = "Aula/Estudo - 10h-12h")
-            label7 = Label(es, text = "Almoço - 12h")
-            label8 = Label(es, text = "Aula/Estudo - 13h-15h")
-            label9 = Label(es, text = "Descanso - 15h-15:30h")
-            label10 = Label(es, text = "{} - 15:30h-16:45h")
-            label11 = Label(es, text = "{} - 16:50h-17:30h")
-            label12 = Label(es, text = "Revisar conteúdo - 17:40h")
-            label13 = Label(es, text = "Jantar - 18h")
-            label14 = Label(es, text = "{} - 18:40h-19:55h")
-            label15 = Label(es, text = "{} - 20h-21:30h")
-            label16 = Label(es, text = "Hora de Dormir - 22h")
-            label1.pack()
-            label2.pack()
-            label3.pack()
-            label4.pack()
-            label5.pack()
-            label6.pack()
-            label7.pack()
-            label8.pack()
-            label9.pack()
-            label10.pack()
-            label11.pack()
-            label12.pack()
-            label13.pack()
-            label14.pack()
-            label15.pack()
-            label16.pack()
-            bot = Button(es, text= "Ver opção 2", command = self.easy2)
-            bot.pack()
-            es.mainloop()
+def easy():
+    es = Tk() 
+    es.title("Rotina facil")
+    label1 = Label(es, text = "Acordar - 06:20h")
+    label2 = Label(es, text = "Banho - 06:40h")
+    label3 = Label(es, text = "Café da Manhã - 06:55h")
+    label4 = Label(es, text = "{} - 07:10h-08h")
+    label5 = Label(es, text = "Aula/Estudo - 08h-10h")
+    label6 = Label(es, text = "Aula/Estudo - 10h-12h")
+    label7 = Label(es, text = "Almoço - 12h")
+    label8 = Label(es, text = "Aula/Estudo - 13h-15h")
+    label9 = Label(es, text = "Descanso - 15h-15:30h")
+    label10 = Label(es, text = "{} - 15:30h-16:45h")
+    label11 = Label(es, text = "{} - 16:50h-17:30h")
+    label12 = Label(es, text = "Revisar conteúdo - 17:40h")
+    label13 = Label(es, text = "Jantar - 18h")
+    label14 = Label(es, text = "{} - 18:40h-19:55h")
+    label15 = Label(es, text = "{} - 20h-21:30h")
+    label16 = Label(es, text = "Hora de Dormir - 22h")
+    label1.pack()
+    label2.pack()
+    label3.pack()
+    label4.pack()
+    label5.pack()
+    label6.pack()
+    label7.pack()
+    label8.pack()
+    label9.pack()
+    label10.pack()
+    label11.pack()
+    label12.pack()
+    label13.pack()
+    label14.pack()
+    label15.pack()
+    label16.pack()
+    bot = Button(es, text= "Ver opção 2", command = easy2)
+    bot.pack()
+    es.mainloop()
 
-        def easy2(self):
-            es2 = Tk()
-            es2.title("Rotina facil 2")
-            label1 = Label(es2, text = "Acordar - 7h")
-            label2 = Label(es2, text = "Banho - 07:15h")
-            label3 = Label(es2, text = "Café da Manhã - 07:30h")
-            label4 = Label(es2, text = "{} - 08:10h")
-            label5 = Label(es2, text = "Aula/Estudo - 08h-10h")
-            label6 = Label(es2, text = "Aula/Estudo - 10h-12h")
-            label7 = Label(es2, text = "Almoço - 12h")
-            label8 = Label(es2, text = "Aula/Estudo - 13h-15h-13:40h")
-            label9 = Label(es2, text = "Descanso - 13:50h-14:30h")
-            label10 = Label(es2, text = "{} - 14:30h-15:30h")
-            label11 = Label(es2, text = "{} - 16:45h-18h")
-            label12 = Label(es2, text = "Revisar conteúdo - 18h")
-            label13 = Label(es2, text = "Jantar - 18:40h-19-55h")
-            label14 = Label(es2, text = "{} - 20:45h-21:30h")
-            label15 = Label(es2, text = "{} - 21:45h-22:20h")
-            label16 = Label(es2, text = "Hora de Dormir - 23h")
-            label1.pack()
-            label2.pack()
-            label3.pack()
-            label4.pack()
-            label5.pack()
-            label6.pack()
-            label7.pack()
-            label8.pack()
-            label9.pack()
-            label10.pack()
-            label11.pack()
-            label12.pack()
-            label13.pack()
-            label14.pack()
-            label15.pack()
-            label16.pack()
-            es2.mainloop()
+def easy2():
+    es2 = Tk()
+    es2.title("Rotina facil 2")
+    label1 = Label(es2, text = "Acordar - 7h")
+    label2 = Label(es2, text = "Banho - 07:15h")
+    label3 = Label(es2, text = "Café da Manhã - 07:30h")
+    label4 = Label(es2, text = "{} - 08:10h")
+    label5 = Label(es2, text = "Aula/Estudo - 08h-10h")
+    label6 = Label(es2, text = "Aula/Estudo - 10h-12h")
+    label7 = Label(es2, text = "Almoço - 12h")
+    label8 = Label(es2, text = "Aula/Estudo - 13h-15h-13:40h")
+    label9 = Label(es2, text = "Descanso - 13:50h-14:30h")
+    label10 = Label(es2, text = "{} - 14:30h-15:30h")
+    label11 = Label(es2, text = "{} - 16:45h-18h")
+    label12 = Label(es2, text = "Revisar conteúdo - 18h")
+    label13 = Label(es2, text = "Jantar - 18:40h-19-55h")
+    label14 = Label(es2, text = "{} - 20:45h-21:30h")
+    label15 = Label(es2, text = "{} - 21:45h-22:20h")
+    label16 = Label(es2, text = "Hora de Dormir - 23h")
+    label1.pack()
+    label2.pack()
+    label3.pack()
+    label4.pack()
+    label5.pack()
+    label6.pack()
+    label7.pack()
+    label8.pack()
+    label9.pack()
+    label10.pack()
+    label11.pack()
+    label12.pack()
+    label13.pack()
+    label14.pack()
+    label15.pack()
+    label16.pack()
+    es2.mainloop()
 
-        def hard(self):
-            hd = Tk()
-            hd.title("Rotina facil 2")
-            label1 = Label(hd, text = "Acordar - 6h20")
-            label2 = Label(hd, text = "Banho - 06:40h")
-            label3 = Label(hd, text = "Café da Manhã - 06:55h")
-            label4 = Label(hd, text = "{} - 07:10h-08h")
-            label5 = Label(hd, text = "Aula/Estudo - 08h-10h")
-            label6 = Label(hd, text = "Aula/Estudo - 10h-12h")
-            label7 = Label(hd, text = "Almoço - 12h")
-            label8 = Label(hd, text = "Aula/Estudo - 13h-14h")
-            label9 = Label(hd, text = "Descanso - 14h-14:30h")
-            label10 = Label(hd, text = "{} - 14:45h-15:20h")
-            label11 = Label(hd, text = "{} - 15:25h-16:45h")
-            label12 = Label(hd, text = "{} - 15:50h-17:30h")
-            label13 = Label(hd, text = "Revisar conteúdo - 17:35h")
-            label14 = Label(hd, text = "Jantar - 18h")
-            label15 = Label(hd, text = "{} - 18:40h-19:55h")
-            label16 = Label(hd, text = "{} - 20h-21:30h")
-            label17 = Label(hd, text = "Hora de Dormir - 22h")
-            label1.pack()
-            label2.pack()
-            label3.pack()
-            label4.pack()
-            label5.pack()
-            label6.pack()
-            label7.pack()
-            label8.pack()
-            label9.pack()
-            label10.pack()
-            label11.pack()
-            label12.pack()
-            label13.pack()
-            label14.pack()
-            label15.pack()
-            label16.pack()
-            label17.pack()
-            hd.mainloop()
-        
-        def hard2():
-            hd2 = Tk()
-            hd2.title("Rotina facil 2")
-            label1 = Label(hd2, text = "Acordar - 7h")
-            label2 = Label(hd2, text = "Banho - 07:15h")
-            label3 = Label(hd2, text = "Café da Manhã - 07:30h")
-            label4 = Label(hd2, text = "{} - 08h-10h")
-            label5 = Label(hd2, text = "Aula/Estudo - 08h-10h")
-            label6 = Label(hd2, text = "Aula/Estudo - 10h-12h")
-            label7 = Label(hd2, text = "Almoço - 12h")
-            label8 = Label(hd2, text = "Aula/Estudo - 12:40h-13:40h")
-            label9 = Label(hd2, text = "Descanso - 13:50h-14:30h")
-            label10 = Label(hd2, text = "{} - 15:30h-16:45h")
-            label11 = Label(hd2, text = "{} - 16:45h-18h")
-            label12 = Label(hd2, text = "{} - 18:40h-19:55h")
-            label13 = Label(hd2, text = "Revisar conteúdo - 20h-20:30h")
-            label14 = Label(hd2, text = "Jantar - 20:45h-21:30h")
-            label15 = Label(hd2, text = "{} - 21:45h-22:20h")
-            label16 = Label(hd2, text = "Hora de Dormir - 23h")
-            label1.pack()
-            label2.pack()
-            label3.pack()
-            label4.pack()
-            label5.pack()
-            label6.pack()
-            label7.pack()
-            label8.pack()
-            label9.pack()
-            label10.pack()
-            label11.pack()
-            label12.pack()
-            label13.pack()
-            label14.pack()
-            label15.pack()
-            label16.pack()
-            hd2.mainloop()
+def hard():
+    hd = Tk()
+    hd.title("Rotina facil 2")
+    label1 = Label(hd, text = "Acordar - 6h20")
+    label2 = Label(hd, text = "Banho - 06:40h")
+    label3 = Label(hd, text = "Café da Manhã - 06:55h")
+    label4 = Label(hd, text = "{} - 07:10h-08h")
+    label5 = Label(hd, text = "Aula/Estudo - 08h-10h")
+    label6 = Label(hd, text = "Aula/Estudo - 10h-12h")
+    label7 = Label(hd, text = "Almoço - 12h")
+    label8 = Label(hd, text = "Aula/Estudo - 13h-14h")
+    label9 = Label(hd, text = "Descanso - 14h-14:30h")
+    label10 = Label(hd, text = "{} - 14:45h-15:20h")
+    label11 = Label(hd, text = "{} - 15:25h-16:45h")
+    label12 = Label(hd, text = "{} - 15:50h-17:30h")
+    label13 = Label(hd, text = "Revisar conteúdo - 17:35h")
+    label14 = Label(hd, text = "Jantar - 18h")
+    label15 = Label(hd, text = "{} - 18:40h-19:55h")
+    label16 = Label(hd, text = "{} - 20h-21:30h")
+    label17 = Label(hd, text = "Hora de Dormir - 22h")
+    label1.pack()
+    label2.pack()
+    label3.pack()
+    label4.pack()
+    label5.pack()
+    label6.pack()
+    label7.pack()
+    label8.pack()
+    label9.pack()
+    label10.pack()
+    label11.pack()
+    label12.pack()
+    label13.pack()
+    label14.pack()
+    label15.pack()
+    label16.pack()
+    label17.pack()
+    bot = Button(hd, text= "Ver opção 2", command = hard2)
+    bot.pack()
+    hd.mainloop()
+
+def hard2():
+    hd2 = Tk()
+    hd2.title("Rotina facil 2")
+    label1 = Label(hd2, text = "Acordar - 7h")
+    label2 = Label(hd2, text = "Banho - 07:15h")
+    label3 = Label(hd2, text = "Café da Manhã - 07:30h")
+    label4 = Label(hd2, text = "{} - 08h-10h")
+    label5 = Label(hd2, text = "Aula/Estudo - 08h-10h")
+    label6 = Label(hd2, text = "Aula/Estudo - 10h-12h")
+    label7 = Label(hd2, text = "Almoço - 12h")
+    label8 = Label(hd2, text = "Aula/Estudo - 12:40h-13:40h")
+    label9 = Label(hd2, text = "Descanso - 13:50h-14:30h")
+    label10 = Label(hd2, text = "{} - 15:30h-16:45h")
+    label11 = Label(hd2, text = "{} - 16:45h-18h")
+    label12 = Label(hd2, text = "{} - 18:40h-19:55h")
+    label13 = Label(hd2, text = "Revisar conteúdo - 20h-20:30h")
+    label14 = Label(hd2, text = "Jantar - 20:45h-21:30h")
+    label15 = Label(hd2, text = "{} - 21:45h-22:20h")
+    label16 = Label(hd2, text = "Hora de Dormir - 23h")
+    label1.pack()
+    label2.pack()
+    label3.pack()
+    label4.pack()
+    label5.pack()
+    label6.pack()
+    label7.pack()
+    label8.pack()
+    label9.pack()
+    label10.pack()
+    label11.pack()
+    label12.pack()
+    label13.pack()
+    label14.pack()
+    label15.pack()
+    label16.pack()
+    hd2.mainloop()
 
 
-        def mainUpday(self):
-            upd = Tk()
-            upd .title("UPday!")
-            titleLabel = Label(upd , text= "Quero saber de você, como quer o *nível* da sua rotina? ")
-            titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
-            buttonChoose = Button(upd , text="Pega leve!", command= self.easy)
-            buttonChoose.grid(column =0, row = 4)
-            buttonChoose2 = Button(upd , text="Vem monxtroooooo!", command= self.hard)
-            buttonChoose2.grid(column =0, row = 5)
-            upd.mainloop()
-        
+def mainUpday():
+    upd = Tk()
+    upd .title("UPday!")
+    titleLabel = Label(upd , text= "Quero saber de você, como quer o *nível* da sua rotina? ")
+    titleLabel.grid(column=0,row=0,padx = 30, pady = 30)
+    buttonChoose = Button(upd , text="Pega leve!", command= easy)
+    buttonChoose.grid(column =0, row = 4)
+    buttonChoose2 = Button(upd , text="Vem monxtroooooo!", command=hard)
+    buttonChoose2.grid(column =0, row = 5)
+    upd.mainloop()
 
 
 
-class Interface(Insere,Editar,Apaga,Visualizar,Buscar):
+
+class Interface():
     def __init__(self):
         pass
 
@@ -487,32 +475,24 @@ class Interface(Insere,Editar,Apaga,Visualizar,Buscar):
         texto_inicial.configure(font=("Segoe Print", 60))
         texto_inicial.grid(column=1,row=0, padx = 100,pady = 300)
         # Botão de inserção
-        insert = Button(self.mainW, text = "Nova Rotina", command= self.inserir)
+        insert = Button(self.mainW, text = "Nova Rotina", command= inserir)
         insert.grid(column=0,row=6, padx = 10,pady = 10)
         # Botão de edição
-        edit = Button(self.mainW, text= "Editar Rotina", command= self.editar)
+        edit = Button(self.mainW, text= "Editar Rotina", command= editar)
         edit.grid(column=0,row=7, padx = 10,pady = 10)
         # Botão de buscar
-        search = Button(self.mainW, text= "Buscar Rotina", command= self.buscar)
+        search = Button(self.mainW, text= "Buscar Rotina", command= buscar)
         search.grid(column=0,row=8, padx = 10,pady = 10)
         # Botão de visualiza
-        check = Button(self.mainW, text= "Ver Rotina", command= self.verRotina)
+        check = Button(self.mainW, text= "Ver Rotina", command= verRotina)
         check.grid(column=2,row=6, padx = 10,pady = 10)
         # Botão de upday
-        Upd = Button(self.mainW, text = "UPday Rotina", command= self.upday)
+        Upd = Button(self.mainW, text = "UPday Rotina", command= mainUpday)
         Upd.grid(column=2,row=7, padx = 10,pady = 10)
         # Botão de apagar
-        erase = Button(self.mainW, text = "Apagar Rotina", command= self.apagar)
+        erase = Button(self.mainW, text = "Apagar Rotina", command= apagar)
         erase.grid(column=2,row=8, padx = 10,pady = 10)
         self.mainW.mainloop()
 
-        
-In = Interface()
-Ins = Insere()
-Ap = Apaga()
-Vi = Visualizar()
-Bs = Buscar()
-Ed = Editar()
-sr = Sortear()
-
-sr.mainUpday()
+a = Interface()
+a.mainW()
