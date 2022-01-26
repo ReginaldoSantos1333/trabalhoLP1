@@ -1,5 +1,5 @@
 from tkinter import *
-from principal import *
+from principaltk import *
 
 
 janela1 = Tk()
