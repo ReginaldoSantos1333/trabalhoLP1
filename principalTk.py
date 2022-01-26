@@ -1,5 +1,3 @@
-from cgitb import text
-from doctest import master
 from tkinter import *
 from tkinter import messagebox
 from upday import upday
