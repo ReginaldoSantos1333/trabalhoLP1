@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
-from turtle import width
 from upday import upday
 from upday import *
 from tkinter import ttk
+
 
 def existe_rotina(rotinas, id):
     if len(rotinas)>0:
@@ -252,6 +252,7 @@ def buscar(rotinas):
                         idbshow_label.pack(pady=30)
                         def bok():
                             busca.destroy()
+                            bshow.destroy()
                         bbokao1 = Button(bshow, text= "Ok!", command = bok)
                         bbokao1.pack(pady = 30)
             else: messagebox.showerror(title="Error", message="Não existe tarefa cadastrada no sistema com esse id ! ")
@@ -272,8 +273,6 @@ def visualizar(rotinas):
     if len(rotinas) > 0:
         visualiza = Tk()
         visualiza.resizable(False,False)
-        w = Scrollbar(visualiza,jump = 1, orient = HORIZONTAL, width = 20)
-        w.pack(side = BOTTOM)
         visualiza.title("Minhas tarefas: ")
         visu_label = Label(visualiza, text = "== Estoque de Tarefas == ")
         visu_label.pack(pady=30)
@@ -283,20 +282,37 @@ def visualizar(rotinas):
             ppvshow_label = Label(visualiza, text="Período: {}".format(tarefa['p']))
             ddvshow_label = Label(visualiza, text="Dificuldade: {}".format(tarefa['d']))
             idvshow_label = Label(visualiza, text="Identificação: {}".format(tarefa['id']))
-            idvshow_label.pack()
-            tfvshow_label.pack()
-            ppvshow_label.pack()
-            ddvshow_label.pack()
+            idvshow_label.pack(ipadx=30)
+            tfvshow_label.pack(ipadx=30)
+            ppvshow_label.pack(ipadx=30)
+            ddvshow_label.pack(ipadx=30)
             qtdshow_label = Label(visualiza, text ="Quantidade de Tarefas Registradas: {}\n".format(len(rotinas)))
             qtdshow_label.pack(pady=30)
+            if i > 5:
+                visualiza2 = Tk()
+                visualiza2.resizable(False,False)
+                visualiza2.title("Minhas tarefas: ")
+                visu_label = Label(visualiza2, text = "== Estoque de Tarefas == ")
+                visu_label.pack(pady=30)
+                for i, tarefa in enumerate(rotinas):
+                    idv2show_label = Label(visualiza2, text ="Tarefa Nº{}:".format(i+1))
+                    tfv2show_label = Label(visualiza2, text ="Tarefa: {}".format(tarefa['nr']))
+                    ppv2show_label = Label(visualiza2, text="Período: {}".format(tarefa['p']))
+                    ddv2show_label = Label(visualiza2, text="Dificuldade: {}".format(tarefa['d']))
+                    idv2show_label = Label(visualiza2, text="Identificação: {}".format(tarefa['id']))
+                    idv2show_label.pack(ipadx=30)
+                    tfv2show_label.pack(ipadx=30)
+                    ppv2show_label.pack(ipadx=30)
+                    ddv2show_label.pack(ipadx=30)
+                    qtd2show_label = Label(visualiza, text ="Quantidade de Tarefas Registradas: {}\n".format(len(rotinas)))
+                    qtd2show_label.pack(pady=30)
+                    if i > 10:
+                        messagebox.showinfo(title="PARE IMEDIATAMENTE!", text= "Você tem tarefas demais, amigo!")
+                        def vexit2 ():
+                            visualiza2.destroy()
+                        vexit2()
         def vexit ():
-            visualiza.destroy()
-
-        def on_closing():
-            if messagebox.askokcancel("", "Deseja mesmo cancelar ?"):
-                visualiza.destroy()
-
-        visualiza.protocol("WM_DELETE_WINDOW", on_closing)     
+            visualiza.destroy() 
         visualiza.mainloop()
     else: messagebox.showerror(title="Error", message="Não foi encontrado nenhuma rotina no nosso sistema :( ")
 
