@@ -3,6 +3,7 @@ from tkinter import messagebox
 from turtle import width
 from upday import upday
 from upday import *
+from tkinter import ttk
 
 def existe_rotina(rotinas, id):
     if len(rotinas)>0:
@@ -20,10 +21,6 @@ def inserir(rotinas):
     insere_label = Label(insere, text = "Insira o código exclusivo dessa rotina: ")
     insere_label.pack(pady=30,ipadx=100)
     def ingetnome():
-        def inexit():
-            insere.destroy()
-            messagebox.showinfo(title="UP!!!!", message="UP-UP! A tarefa foi cadastrada com sucesso!")
-        
         def existe_rotina(rotinas, id):
             if len(rotinas)>0:
                 for tarefa in rotinas:
@@ -37,7 +34,7 @@ def inserir(rotinas):
         if idboxTXT.get("1.0", END)=="\n":
             messagebox.showerror(title="Error", message="Não são permitidas tarefas vazias")
             insere.destroy()    
-        id = idboxTXT.get(1.0,"end-1c")
+        id = idboxTXT.get(1.0,"end")
         if not existe_rotina(rotinas, id):
             pass
         else:
@@ -76,6 +73,12 @@ def inserir(rotinas):
                 ddlb = Label(dd, text = "Como você classifica essa atividade (Facil/Dificil)?")
                 ddlb.pack(pady=20,ipadx=100)
                 def ingetnome4():
+                    def inexit():
+                        insere.destroy()
+                        dd.destroy()
+                        tff.destroy()
+                        pp.destroy()
+                        messagebox.showinfo(title="UP!!!!", message="UP-UP! A tarefa foi cadastrada com sucesso!")
                     ddboxTXT.get("1.0", "end").lower()
                     if ddboxTXT.get("1.0", END)=="\n":
                         messagebox.showerror(title="Error", message="Não são permitidas tarefas vazias")
@@ -119,10 +122,6 @@ def editar(rotinas):
         edita_label = Label(edita, text = "Insira o id da tarefa a ser alterada: ")
         edita_label.pack(pady=30,ipadx=100)
         def edgetnome():
-            def edexit():
-                newrtn.destroy()
-                edita.destroy()
-                messagebox.showinfo(title="UP!!!!", message="UP-UP! Os dados foram alterados com sucesso!")
             if edboxTXT.get("1.0", END)=="\n":
                 messagebox.showerror(title="Error", message="Não são permitidas tarefas vazias")
                 edita.destroy()
@@ -168,9 +167,9 @@ def editar(rotinas):
                                 if pprtnboxTXT.get("1.0", END)=="\n":
                                     messagebox.showerror(title="Error", message="Não são permitidas tarefas vazias")
                                     edita.destroy()
-                                elif newrtnboxTXT.get(1.0, "end-1c").lower() != "manha":
-                                    if newrtnboxTXT.get(1.0, "end-1c").lower() != "tarde":
-                                        if newrtnboxTXT.get(1.0, "end-1c").lower() != "noite":
+                                elif pprtnboxTXT.get(1.0, "end-1c").lower() != "manha":
+                                    if pprtnboxTXT.get(1.0, "end-1c").lower() != "tarde":
+                                        if pprtnboxTXT.get(1.0, "end-1c").lower() != "noite":
                                             messagebox.showwarning(title="Aviso!", message="Entrada inválida!")
                                             edita.destroy() 
                                 pprtnf=pprtnboxTXT.get("1.0", END)
@@ -180,7 +179,12 @@ def editar(rotinas):
                                 ddrtn_label = Label(ddrtn, text = "Insira a nova dificuldade: Fácil/Difícil ")
                                 ddrtn_label.pack(pady=30)
                                 def ddrtngetnome():
-                                    ddrtnboxTXT.get(1.0, "end").lower()
+                                    def edexit():
+                                        newrtn.destroy()
+                                        edita.destroy()
+                                        pprtn.destroy()
+                                        ddrtn.destroy()
+                                        messagebox.showinfo(title="UP!!!!", message="UP-UP! Os dados foram alterados com sucesso!")
                                     if ddrtnboxTXT.get("1.0", END)=="\n":
                                         messagebox.showerror(title="Error", message="Não são permitidas tarefas vazias")
                                         edita.destroy()
@@ -203,7 +207,7 @@ def editar(rotinas):
                         newrtnbotao1 = Button(newrtn, text= "Pronto!", command = newrtngetnome)
                         newrtnbotao1.pack(pady = 30)
                         newrtn.mainloop()
-            else:messagebox.showerror(title="Error", message="Por favor, tente um novo e-mail.")            
+            else:messagebox.showerror(title="Error", message="Não existe tarefa cadastrada no sistema com esse id")            
         edboxTXT = Text(edita, height = 0, width=12)
         edboxTXT.pack(pady = 30)
         edbotao1 = Button(edita, text= "Pronto!", command = edgetnome)
@@ -287,8 +291,7 @@ def visualizar(rotinas):
             qtdshow_label.pack(pady=30)
         def vexit ():
             visualiza.destroy()
-        visubotao1 = Button(visualiza, text= "Ok!", command = vexit)
-        visubotao1.pack(pady = 30)
+
         def on_closing():
             if messagebox.askokcancel("", "Deseja mesmo cancelar ?"):
                 visualiza.destroy()
@@ -370,8 +373,8 @@ def principal():
     janela1.title("Bem Vindo!")
     def exit():
         janela1.destroy()
-    text_label = Label(janela1, text = """Olá! Bem vindo(a) à UPday!")
-    Juntos podemos dar um 'Up' no seu dia ;)")
+    text_label = Label(janela1, text = """Olá! Bem vindo(a) à UPday!
+    Juntos podemos dar um 'Up' no seu dia ;)
         Primeiramente, seria ótimo te conhecer mais um pouco. Vamos começar?!
         =====================================================
     """)
@@ -412,6 +415,12 @@ def principal():
         boxTXT.pack()
         botao1 = Button(janela2, text= "Pronto!", command = getnome)
         botao1.pack()
+        def on_closing():
+            if messagebox.askokcancel("Fechar", "Quer mesmo sair ?"):
+               messagebox.showinfo(title="Até logo!", message="Lembre-se, sempre há tempo para dar um 'UP' na sua vida!")
+               janela2.destroy()
+        janela2.protocol("WM_DELETE_WINDOW", on_closing)
+        janela2.mainloop()
     
     refresh()
 
